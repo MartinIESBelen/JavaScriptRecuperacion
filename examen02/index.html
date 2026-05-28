@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Países UE - Tus Iniciales</title>
+</head>
+<body>
+<h1>Países UE - Tu Nombre y Apellidos</h1> <main>
+    <p><strong>Elige un idioma:</strong></p>
+    <input type="checkbox" id="cbIdomaOfi">
+    <label for="cbIdomaOfi">Solo idiomas oficiales:</label>
+
+    <div id="listaPaisesRadio" style="margin-top: 10px; margin-bottom: 20px;"></div>
+
+    <div id="infoFiltro" style="margin-bottom: 10px; font-weight: bold;"></div>
+
+    <div id="contenedorPaises">
+        <table id="tablaPaises" border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
+            <thead>
+            <tr>
+                <th>País</th>
+                <th>Capital</th>
+                <th>Población <br><small id="totalPoblacionHeader"></small></th>
+                <th>Fecha adhesión</th>
+            </tr>
+            </thead>
+            <tbody id="cuerpoTablaPaises">
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

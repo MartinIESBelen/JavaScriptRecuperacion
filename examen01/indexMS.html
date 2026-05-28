@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para Crear/Editar Provincias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .comunidades-column {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-column {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filtro-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filtro-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .filtro-container select {
+            width: 200px;
+            padding: 5px;
+        }
+
+        .comunidades-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        .comunidades-table th,
+        .comunidades-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comunidades-table th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+        }
+
+        .alinear-derecha {
+            text-align: right;
+        }
+
+        .comunidades-table tbody tr {
+            cursor: pointer;
+        }
+
+        .comunidades-table tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .comunidades-table tbody tr.selected {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            background-color: #fafafa;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 3px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[readonly], textarea[readonly] {
+            background-color: #f5f5f5;
+        }
+
+        .section {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .language-row {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .language-row input {
+            flex: 1;
+        }
+
+        button.add-city {
+            background: #2196F3;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button.add-city:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            color: #fff;
+        }
+
+        #mensajeValidacion {
+            color: white;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        .mensaje-exito {
+            color: #4CAF50 !important;
+        }
+
+        .input-error {
+            border: 2px solid #ff4d4d !important;
+            outline: none; /* Quita el borde azul por defecto al hacer click */
+        }
+
+        .error-texto {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Comunidades y Ciudades Autónomas de España</h1>
+<h3 style="color: red">Martin Sierra</h3>
+
+<div class="container">
+    <div class="comunidades-column">
+
+        <div class="filtro-container">
+            <label for="sltFiltro">Ordenar por:</label>
+            <select id="sltFiltro" name="sltFiltro">
+                <option value="nombre">Nombre</option>
+                <option value="poblacionTotal">Población total</option>
+            </select>
+        </div>
+
+        <table class="comunidades-table">
+            <thead>
+            <tr>
+                <th>Comunidad / Ciudad Autónoma</th>
+                <th class="alinear-derecha">Población total (aprox.)</th>
+            </tr>
+            </thead>
+            <tbody id="comunidadesBody"></tbody>
+        </table>
+
+    </div>
+
+    <div class="form-column">
+        <form id="comunidadForm">
+            <label for="comunidad">Comunidad Autónoma:</label>
+            <input type="text" id="comunidad" name="comunidad" required readonly>
+
+            <label for="capital">Capital:</label>
+            <input type="text" id="capital" name="capital" required readonly>
+
+            <div class="section">
+                <label for="presidente">Presidente/a:</label>
+                <div class="language-row">
+                    <input type="text" id="presidente" name="presidente" placeholder="Nombre del presidente/a" required>
+                </div>
+                <span id="errorPresidente" class="error-texto" style="display: none;">¡Este campo no puede dejarse vacío!</span>
+            </div>
+
+            <div class="section">
+                <label for="output">Provincias:</label>
+                <textarea id="output" rows="6" cols="50" placeholder="Selecciona una comunidad para ver sus provincias." readonly></textarea>
+            </div>
+
+            <button type="submit" id="guardar" class="add-city" disabled>Guardar cambios en el Presidente/a</button>
+        </form>
+    </div>
+</div>
+
+<script src="ccaa.js"></script>
+<script src="scriptMS.js"></script>
+</body>
+</html>
