@@ -67,9 +67,44 @@ function pintarTablaPaises(listaPaises){
     `).join("");
 }
 
-function soloIdiomasOficiales(idioma){
-    if(!idioma) return;
+function filtrarPaisesPorIdioma(idioma){
+    if(!idioma || idioma === "Ninguno") return datosUE;
+    const idiomaBuscado = idioma.toLowerCase().trim();
 
+    return datosUE.filter(p => {
+        let listaIdiomas = [];
+
+        if(p.idiomas && p.idiomas.oficial){
+            listaIdiomas = [...listaIdiomas, ...p.idiomas.oficial.sort(",").map(i => i.toLowerCase().trim())];
+        }
+        if(p.idiomas && p.idiomas.otros_idiomas){
+            listaIdiomas = [...listaIdiomas, ...p.idiomas.otros_idiomas.sort(",").map(i => i.toLowerCase().trim())];
+        }
+
+        return listaIdiomas.includes(idiomaBuscado);
+    })
+}
+
+function soloIdiomasOficiales(idioma){
+    if(!idioma || idioma === "Ninguno") return datosUE;
+
+    const idiomaBuscado = idioma.toLowerCase().trim();
+
+    return datosUE.filter(p => {
+        if(p.idiomas && p.idiomas.oficial){
+            const listaOficial = p.idiomas.oficial.split(",").map(i => i.toLowerCase().trim());
+
+            return listaOficial.includes(idiomaBuscado);
+        }
+        return false;
+    })
+}
+
+function obtenerPaisesFiltrado(idioma, soloOficiales){
+    if(soloOficiales){
+        return soloIdiomasOficiales(idioma);
+    }
+    return filtrarPaisesPorIdioma(idioma);
 }
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -78,5 +113,9 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     document.getElementById("infoFiltro").textContent = `Se muestran los ${datosUE.length} países de la UE`;
 
+    const radioIdiomas = document.querySelectorAll('input[type="radio"]');
+    const cbOficiales = document.getElementById("cbIdomaOfi")
+    radioIdiomas.addEventListener('selected', () =>{
 
+    });
 });
