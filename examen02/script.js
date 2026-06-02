@@ -6,31 +6,38 @@ function ordenarPorPoblacion(lista){
 
 function idiomasSinRepetir(){
     let idiomas = new Set();
+
     datosUE.forEach(p => {
         if(p.idiomas?.oficial){
             p.idiomas.oficial.split(", ").forEach(i => idiomas.add(i.toLowerCase().trim()));
         }
-        if(p.idiomas?.otros_idiomas){
+        if( p.idiomas?.otros_idiomas){
             p.idiomas.otros_idiomas.split(", ").forEach(i => idiomas.add(i.toLowerCase().trim()));
         }
     });
     return [...idiomas].sort((a,b) => a.localeCompare(b));
 }
 
-function pintarCheckBoxesIdiomas(){
+function pintarRadioIdiomas(){
     const contenedor = document.getElementById("listaPaisesRadio");
+
+    const radioActivo = document.querySelector('input[name="idioma"]:checked');
+    const idiomaPrevio = radioActivo ? radioActivo.value : "Ninguno";
+
     const idiomas = idiomasSinRepetir();
+
+    const mantenerIdioma = idiomas.includes(idiomaPrevio) ? idiomaPrevio : "Ninguno";
 
     let htmlRadios = `
         <label style="margin-right: 10px;">
-            <input type="radio" name="idioma" value="Ninguno" checked>
+            <input type="radio" name="idioma" value="Ninguno" ${mantenerIdioma === "Ninguno" ? "checked" : ""}>
             <strong>Ninguno</strong>
         </label>
     `;
 
     htmlRadios += idiomas.map(i => `
         <label style="margin-right: 10px;">
-            <input type="radio" name="idioma" value="${i}">
+            <input type="radio" name="idioma" value="${i}" ${mantenerIdioma === i ? "checked" : ""}>
             ${i}
         </label>
     `).join("");
@@ -38,7 +45,8 @@ function pintarCheckBoxesIdiomas(){
     contenedor.innerHTML = htmlRadios;
 }
 
-function sumarPoblacionTotal(listaPaises){
+function sumarPoblacionTotal(){
+    const listaPaises = [...datosUE];
     return listaPaises.reduce((acumulador, pais) => {
         return acumulador + pais.poblacion_nacional;
     }, 0);
@@ -48,74 +56,86 @@ function calcularMediaPoblacion(lista){
     return sumarPoblacionTotal(lista) / lista.length;
 }
 
+
 function pintarTablaPaises(listaPaises){
     const tbody = document.getElementById("cuerpoTablaPaises");
     const headerPoblacion = document.getElementById("totalPoblacionHeader");
 
     const listaOrdenada = ordenarPorPoblacion(listaPaises);
 
-    const totalPob = sumarPoblacionTotal(listaOrdenada);
+    const totalPob = sumarPoblacionTotal();
     headerPoblacion.textContent = `(${totalPob.toLocaleString('es-ES')} total UE)`;
 
-    tbody.innerHTML = listaOrdenada.map(p => `
+    const mediaPoblacionUE = calcularMediaPoblacion(datosUE);
+
+    tbody.innerHTML = listaOrdenada.map(p => {
+
+        let esMonarquia = p.regimen_politico && p.regimen_politico.tipo.toLowerCase().includes("monarquía");
+        let corona = esMonarquia ? "👑" : "";
+
+        let superaMedia = p.poblacion_nacional > mediaPoblacionUE;
+        let nombrePais = superaMedia ? `<strong>${p.pais}</strong>` : p.pais;
+
+        let fechaArreglada = new Date(p.fecha_adhesion).toLocaleDateString('es-ES');
+
+        return`
         <tr>
-            <td>${p.pais}</td>
+            <td>${nombrePais}${corona}</td>
             <td>${p.capital}</td>
             <td>${p.poblacion_nacional.toLocaleString('es-ES')}</td>
-            <td>${p.fecha_adhesion}</td>
+            <td>${fechaArreglada}</td>
         </tr>    
-    `).join("");
+    `}).join("");
 }
 
-function filtrarPaisesPorIdioma(idioma){
-    if(!idioma || idioma === "Ninguno") return datosUE;
-    const idiomaBuscado = idioma.toLowerCase().trim();
 
-    return datosUE.filter(p => {
-        let listaIdiomas = [];
+function filtrarTablaPaises(){
 
-        if(p.idiomas && p.idiomas.oficial){
-            listaIdiomas = [...listaIdiomas, ...p.idiomas.oficial.sort(",").map(i => i.toLowerCase().trim())];
-        }
-        if(p.idiomas && p.idiomas.otros_idiomas){
-            listaIdiomas = [...listaIdiomas, ...p.idiomas.otros_idiomas.sort(",").map(i => i.toLowerCase().trim())];
-        }
+    const soloOficiales = document.getElementById("cbIdiomaOfi").checked;
+    const idiomaSelect = document.querySelector('input[name="idioma"]:checked');
+    const idioma = idiomaSelect ? idiomaSelect.value : "Ninguno";
 
-        return listaIdiomas.includes(idiomaBuscado);
-    })
-}
+    let paisesFiltrados = datosUE;
 
-function soloIdiomasOficiales(idioma){
-    if(!idioma || idioma === "Ninguno") return datosUE;
+    if (idioma !== "Ninguno"){
+        paisesFiltrados = datosUE.filter(p => {
+            const arrayOficiales = p.idiomas?.oficial ? p.idiomas.oficial.toLowerCase().split(",").map(i => i.trim()) : [];
+            const arrayNoOficiales = p.idiomas?.otros_idiomas ? p.idiomas.otros_idiomas.toLowerCase().split(",").map(i => i.trim()) : [];
 
-    const idiomaBuscado = idioma.toLowerCase().trim();
+            const esOficial = arrayOficiales.includes(idioma);
+            const noEsOficial = arrayNoOficiales.includes(idioma);
 
-    return datosUE.filter(p => {
-        if(p.idiomas && p.idiomas.oficial){
-            const listaOficial = p.idiomas.oficial.split(",").map(i => i.toLowerCase().trim());
-
-            return listaOficial.includes(idiomaBuscado);
-        }
-        return false;
-    })
-}
-
-function obtenerPaisesFiltrado(idioma, soloOficiales){
-    if(soloOficiales){
-        return soloIdiomasOficiales(idioma);
+            return soloOficiales ? esOficial : esOficial || noEsOficial;
+        })
     }
-    return filtrarPaisesPorIdioma(idioma);
+
+    pintarTablaPaises(paisesFiltrados);
+
+    const infoBadge = document.getElementById("infoFiltro");
+    if (idioma === "Ninguno") {
+        infoBadge.textContent = `Se muestran los ${paisesFiltrados.length} países de la UE`;
+    } else {
+        const tipoTexto = soloOficiales ? "oficial" : "Todos";
+        infoBadge.textContent = `Filtrado por: "${idioma}" (${tipoTexto}) (${paisesFiltrados.length} de ${datosUE.length})`;
+    }
 }
+
 
 document.addEventListener("DOMContentLoaded", () =>{
-    pintarCheckBoxesIdiomas();
+    pintarRadioIdiomas();
     pintarTablaPaises(datosUE);
 
     document.getElementById("infoFiltro").textContent = `Se muestran los ${datosUE.length} países de la UE`;
 
-    const radioIdiomas = document.querySelectorAll('input[type="radio"]');
-    const cbOficiales = document.getElementById("cbIdomaOfi")
-    radioIdiomas.addEventListener('selected', () =>{
-
+    document.getElementById("cbIdiomaOfi").addEventListener("change", () => {
+        pintarRadioIdiomas();
+        filtrarTablaPaises();
     });
+
+    document.getElementById("listaPaisesRadio").addEventListener("change", (e) => {
+        if (e.target.name === "idioma") {
+            filtrarTablaPaises();
+        }
+    });
+
 });

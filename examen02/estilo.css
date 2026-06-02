@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #000;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #ccc;
+    max-width: 1000px;
+    width: 100%;
+}
+
+h1 {
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+.seccion-filtros {
+    background-color: transparent;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+#listaPaisesRadio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#listaPaisesRadio label {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+}
+
+#listaPaisesRadio label:hover {
+    background-color: #f9f9f9;
+}
+
+#listaPaisesRadio label:has(input:checked) {
+    background-color: #eee;
+    border-color: #999;
+    font-weight: bold;
+}
+
+#infoFiltro {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+#contenedorPaises {
+    overflow-x: auto;
+}
+
+#tablaPaises {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    font-size: 0.95rem;
+    background-color: #fff;
+}
+
+#tablaPaises th,
+#tablaPaises td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+#tablaPaises th {
+    background-color: #f9f9f9;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #666;
+}
+
+#tablaPaises th small {
+    font-weight: normal;
+    color: #666;
+    display: block;
+    margin-top: 2px;
+}
+
+#tablaPaises th:nth-child(3),
+#tablaPaises td:nth-child(3) {
+    text-align: right;
+}
+
+#tablaPaises tbody tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+#tablaPaises tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.poblacion-alta {
+    background-color: #ffffe0 !important;
+}
+
+.poblacion-alta:hover {
+    background-color: #fafad2 !important;
+}
+
+.simbolo-monarquia {
+    color: #000;
+    margin-left: 5px;
+    font-size: 1rem;
+    vertical-align: middle;
+}
