@@ -1,0 +1,225 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    padding: 20px;
+    color: #333;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.nombre-autor {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.filtros-container {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#buscador {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#buscador:focus {
+    border-color: #3498db;
+}
+
+#contenedor-estilos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+#contenedor-estilos label {
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+#info-filtro {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.1em;
+}
+
+#contenedor-festivales {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta-festival {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-festival h2 {
+    margin-top: 0;
+    color: #f1c40f;
+    border-bottom: 1px solid #7f8c8d;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-festival p {
+    margin: 8px 0;
+    color: #bdc3c7;
+}
+
+.tarjeta-festival p strong.ciudad-txt {
+    color: #ecf0f1;
+}
+
+.fila-destacada {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.precio-badge {
+    color: #2ecc71;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.artistas-badge {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.escenarios-list {
+    margin: 5px 0;
+    padding-left: 20px;
+    color: #bdc3c7;
+}
+
+.escenarios-list span {
+    color: #ecf0f1;
+}
+
+.generos-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.genero-tag {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #3498db;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    margin-right: 5px;
+    margin-top: 8px;
+    border: 1px solid #3498db;
+}
+
+.area-director {
+    margin-top: auto;
+    border-top: 1px solid #7f8c8d;
+    padding-top: 15px;
+}
+
+.area-director label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f1c40f;
+}
+
+.director-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-director {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    flex-grow: 1;
+}
+
+.btn-guardar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.btn-guardar:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.btn-guardar:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.error-msg {
+    color: #e74c3c;
+    display: none;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.success-msg {
+    color: #2ecc71;
+    display: none;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.error-container {
+    color: red;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+.no-results {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: #333;
+}

@@ -1,0 +1,398 @@
+[
+  {
+    "nombre": "Primavera Sound",
+    "ciudad": "Barcelona",
+    "mes": "Junio",
+    "precio_entrada": 220,
+    "capacidad_diaria": 65000,
+    "director": "Gabi Ruiz",
+    "generos": [
+      "indie",
+      "electrónica",
+      "alternativo"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Primavera",
+        "aforo": 30000,
+        "artistas": [
+          {
+            "nombre": "Blur",
+            "hora_inicio": "22:00",
+            "duracion_min": 90,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Lana Del Rey",
+            "hora_inicio": "20:00",
+            "duracion_min": 75,
+            "origen": "EEUU"
+          },
+          {
+            "nombre": "Arcade Fire",
+            "hora_inicio": "23:45",
+            "duracion_min": 60,
+            "origen": "Canadá"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario ATP",
+        "aforo": 18000,
+        "artistas": [
+          {
+            "nombre": "Caroline Polachek",
+            "hora_inicio": "21:00",
+            "duracion_min": 60,
+            "origen": "EEUU"
+          },
+          {
+            "nombre": "Bicep",
+            "hora_inicio": "23:00",
+            "duracion_min": 90,
+            "origen": "Reino Unido"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Mad Cool",
+    "ciudad": "Madrid",
+    "mes": "Julio",
+    "precio_entrada": 195,
+    "capacidad_diaria": 50000,
+    "director": "Jordi Roca",
+    "generos": [
+      "rock",
+      "pop",
+      "indie"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Vodafone",
+        "aforo": 25000,
+        "artistas": [
+          {
+            "nombre": "Foo Fighters",
+            "hora_inicio": "22:30",
+            "duracion_min": 120,
+            "origen": "EEUU"
+          },
+          {
+            "nombre": "Billie Eilish",
+            "hora_inicio": "20:30",
+            "duracion_min": 75,
+            "origen": "EEUU"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario Cupra",
+        "aforo": 15000,
+        "artistas": [
+          {
+            "nombre": "Imagine Dragons",
+            "hora_inicio": "21:00",
+            "duracion_min": 90,
+            "origen": "EEUU"
+          },
+          {
+            "nombre": "Vetusta Morla",
+            "hora_inicio": "19:00",
+            "duracion_min": 60,
+            "origen": "España"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Sónar",
+    "ciudad": "Barcelona",
+    "mes": "Junio",
+    "precio_entrada": 180,
+    "capacidad_diaria": 35000,
+    "director": "Ricard Robles",
+    "generos": [
+      "electrónica",
+      "techno",
+      "experimental"
+    ],
+    "escenarios": [
+      {
+        "nombre": "SonarHall",
+        "aforo": 12000,
+        "artistas": [
+          {
+            "nombre": "Aphex Twin",
+            "hora_inicio": "02:00",
+            "duracion_min": 120,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Four Tet",
+            "hora_inicio": "00:00",
+            "duracion_min": 90,
+            "origen": "Reino Unido"
+          }
+        ]
+      },
+      {
+        "nombre": "SonarClub",
+        "aforo": 5000,
+        "artistas": [
+          {
+            "nombre": "Bonobo",
+            "hora_inicio": "23:00",
+            "duracion_min": 75,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Floating Points",
+            "hora_inicio": "01:00",
+            "duracion_min": 60,
+            "origen": "Reino Unido"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "BBK Live",
+    "ciudad": "Bilbao",
+    "mes": "Julio",
+    "precio_entrada": 155,
+    "capacidad_diaria": 40000,
+    "director": "Iker Gómez",
+    "generos": [
+      "rock",
+      "pop",
+      "alternativo"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Principal",
+        "aforo": 20000,
+        "artistas": [
+          {
+            "nombre": "Arctic Monkeys",
+            "hora_inicio": "23:00",
+            "duracion_min": 100,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Rosalía",
+            "hora_inicio": "21:00",
+            "duracion_min": 75,
+            "origen": "España"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario Ttakun",
+        "aforo": 8000,
+        "artistas": [
+          {
+            "nombre": "The Blaze",
+            "hora_inicio": "22:00",
+            "duracion_min": 60,
+            "origen": "Francia"
+          },
+          {
+            "nombre": "Amaia",
+            "hora_inicio": "20:00",
+            "duracion_min": 45,
+            "origen": "España"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Arenal Sound",
+    "ciudad": "Burriana",
+    "mes": "Agosto",
+    "precio_entrada": 120,
+    "capacidad_diaria": 55000,
+    "director": "Pablo Vidal",
+    "generos": [
+      "pop",
+      "reggaeton",
+      "indie"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Playa",
+        "aforo": 30000,
+        "artistas": [
+          {
+            "nombre": "Quevedo",
+            "hora_inicio": "00:00",
+            "duracion_min": 60,
+            "origen": "España"
+          },
+          {
+            "nombre": "Bad Gyal",
+            "hora_inicio": "22:00",
+            "duracion_min": 60,
+            "origen": "España"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario Arena",
+        "aforo": 12000,
+        "artistas": [
+          {
+            "nombre": "Los Planetas",
+            "hora_inicio": "21:00",
+            "duracion_min": 75,
+            "origen": "España"
+          },
+          {
+            "nombre": "Nathy Peluso",
+            "hora_inicio": "23:15",
+            "duracion_min": 60,
+            "origen": "España"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Bilbao BBK Live",
+    "ciudad": "Bilbao",
+    "mes": "Julio",
+    "precio_entrada": 160,
+    "capacidad_diaria": 42000,
+    "director": "Leire Aurre",
+    "generos": [
+      "indie",
+      "electrónica",
+      "folk"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Kobetamendi",
+        "aforo": 22000,
+        "artistas": [
+          {
+            "nombre": "Massive Attack",
+            "hora_inicio": "22:30",
+            "duracion_min": 90,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Gorillaz",
+            "hora_inicio": "21:00",
+            "duracion_min": 80,
+            "origen": "Reino Unido"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "FIB",
+    "ciudad": "Benicàssim",
+    "mes": "Julio",
+    "precio_entrada": 145,
+    "capacidad_diaria": 35000,
+    "director": "Nelson Pérez",
+    "generos": [
+      "rock",
+      "indie",
+      "electrónica"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Estrella Damm",
+        "aforo": 18000,
+        "artistas": [
+          {
+            "nombre": "The Chemical Brothers",
+            "hora_inicio": "01:00",
+            "duracion_min": 90,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Interpol",
+            "hora_inicio": "23:00",
+            "duracion_min": 75,
+            "origen": "EEUU"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario Orange",
+        "aforo": 10000,
+        "artistas": [
+          {
+            "nombre": "Jungle",
+            "hora_inicio": "21:30",
+            "duracion_min": 60,
+            "origen": "Reino Unido"
+          },
+          {
+            "nombre": "Idles",
+            "hora_inicio": "20:00",
+            "duracion_min": 60,
+            "origen": "Reino Unido"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Cruïlla",
+    "ciudad": "Barcelona",
+    "mes": "Julio",
+    "precio_entrada": 95,
+    "capacidad_diaria": 28000,
+    "director": "Jordi Herreruela",
+    "generos": [
+      "reggae",
+      "pop",
+      "soul"
+    ],
+    "escenarios": [
+      {
+        "nombre": "Escenario Principal",
+        "aforo": 15000,
+        "artistas": [
+          {
+            "nombre": "Damian Marley",
+            "hora_inicio": "22:00",
+            "duracion_min": 90,
+            "origen": "Jamaica"
+          },
+          {
+            "nombre": "Burna Boy",
+            "hora_inicio": "20:30",
+            "duracion_min": 75,
+            "origen": "Nigeria"
+          }
+        ]
+      },
+      {
+        "nombre": "Escenario Paral·lel",
+        "aforo": 8000,
+        "artistas": [
+          {
+            "nombre": "Rigoberta Bandini",
+            "hora_inicio": "19:00",
+            "duracion_min": 60,
+            "origen": "España"
+          },
+          {
+            "nombre": "Boney M.",
+            "hora_inicio": "21:00",
+            "duracion_min": 60,
+            "origen": "Alemania"
+          }
+        ]
+      }
+    ]
+  }
+]
